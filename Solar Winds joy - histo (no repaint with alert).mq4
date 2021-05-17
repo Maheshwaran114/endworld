@@ -16,6 +16,7 @@ extern int period=35;
 extern int smooth=10; 
 extern bool DoAlert=true;
 extern bool alertMail=false;
+extern bool Push_Alert=true;
 datetime lastAlertTime;
 
 
@@ -146,6 +147,7 @@ int start()
             if (DoAlert)     Alert(sAlertMsg);
             lastAlertTime = Time[0];  
             if (alertMail)   SendMail(sAlertMsg, "MT4 Alert!\n" + TimeToStr(TimeCurrent(),TIME_DATE|TIME_SECONDS )+"\n"+sAlertMsg);   
+            if(Push_Alert)  SendNotification(sAlertMsg);
          }
                      
       }
